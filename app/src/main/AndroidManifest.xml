@@ -12,10 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eight">
 
-        <!-- ✅ 注册好友页面（HomeActivity） -->
+        <!-- 聊天页 -->
+        <activity
+            android:name=".ChatActivity"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+
+        <!-- 统计页 -->
+        <activity
+            android:name=".StatsActivity"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+
+        <!-- 管理员工具页 -->
+        <activity
+            android:name=".AdminActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- 主页 -->
         <activity android:name=".HomeActivity" />
 
-        <!-- 启动页（MainActivity） -->
+        <!-- 启动页 -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

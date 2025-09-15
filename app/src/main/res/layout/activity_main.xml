@@ -13,11 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="请输入用户名"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="32dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginHorizontal="32dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <!-- 密码 -->
     <EditText
@@ -26,35 +26,161 @@
         android:layout_height="wrap_content"
         android:hint="请输入密码"
         android:inputType="textPassword"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp"
         app:layout_constraintTop_toBottomOf="@id/etUsername"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="32dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <!-- 头像选择 -->
-    <Spinner
-        android:id="@+id/spinnerAvatar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="32dp" />
-
-    <!-- 登录按钮 -->
-    <Button
-        android:id="@+id/btnLogin"
+    <!-- 角色选择 -->
+    <RadioGroup
+        android:id="@+id/rgRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录"
-        app:layout_constraintTop_toBottomOf="@id/spinnerAvatar"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintRight_toRightOf="parent">
 
-    <!-- 会动的圆形加载进度条 -->
+        <RadioButton
+            android:id="@+id/rbUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="普通用户"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rbAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="管理员"
+            android:layout_marginStart="12dp"/>
+    </RadioGroup>
+
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tvChooseAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择头像"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rgRole"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- 四个固定头像 -->
+    <RadioGroup
+        android:id="@+id/avatarGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseAvatar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbA1"
+            android:button="@null"
+            android:background="@drawable/selector_avatar_bg"
+            android:drawableTop="@drawable/baseline_architecture_24"
+            android:drawablePadding="6dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="8dp"
+            android:text=""
+            android:layout_marginEnd="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbA2"
+            android:button="@null"
+            android:background="@drawable/selector_avatar_bg"
+            android:drawableTop="@drawable/baseline_brightness_low_24"
+            android:drawablePadding="6dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="8dp"
+            android:text=""
+            android:layout_marginEnd="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbA3"
+            android:button="@null"
+            android:background="@drawable/selector_avatar_bg"
+            android:drawableTop="@drawable/ic_android_black_24_1dp"
+            android:drawablePadding="6dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="8dp"
+            android:text=""
+            android:layout_marginEnd="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbA4"
+            android:button="@null"
+            android:background="@drawable/selector_avatar_bg"
+            android:drawableTop="@drawable/ic_android_black_24dp"
+            android:drawablePadding="6dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="8dp"
+            android:text="" />
+    </RadioGroup>
+
+    <!-- 预览标题 -->
+    <TextView
+        android:id="@+id/tvAvatarPreviewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="头像预览"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/avatarGroup"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- 预览区 -->
+    <ImageView
+        android:id="@+id/ivAvatarPreview"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Avatar Preview"
+        android:background="@drawable/selector_avatar_bg"
+        app:layout_constraintTop_toBottomOf="@id/tvAvatarPreviewLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- 登录 / 注册按钮并排 -->
+    <LinearLayout
+        android:id="@+id/btnRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatarPreview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:layout_marginStart="12dp" />
+    </LinearLayout>
+
+    <!-- Loading -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
@@ -63,7 +189,7 @@
         android:layout_marginTop="20dp"
         android:indeterminate="true"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@id/btnRow"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
