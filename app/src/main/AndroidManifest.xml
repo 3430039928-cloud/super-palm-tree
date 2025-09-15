@@ -12,7 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eight">
 
-        <!-- ✅ 注册好友页面（HomeActivity） -->
+        <!-- 聊天页（ChatActivity） -->
+        <activity
+            android:name=".ChatActivity"
+            android:parentActivityName=".HomeActivity">
+            <!-- 兼容旧版支持库的父页面声明 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+
+        <!-- 好友主页（HomeActivity） -->
         <activity android:name=".HomeActivity" />
 
         <!-- 启动页（MainActivity） -->
